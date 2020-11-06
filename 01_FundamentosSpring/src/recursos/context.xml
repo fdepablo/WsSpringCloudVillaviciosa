@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- Este fichero servira para dar de alta todos nuestro objetos en el
+	contexto de spring. Los objetos que creemos con "new" se daran de alta
+	en la JVM, mientras que los objetos dados de alta aquí se darán en el 
+	contexto de Spring. 
+	
+	Los objetos dados de alta en el contexto de spring son comunmente llamados
+	"bean"
+	
+	para crear un objeto en spring usareremos la etiqueta "bean" y al menos necesitamos
+	darle dos atributos, la clase y un id que debe ser unico
+	
+	Por defecto el ciclo de vida de los objetos en spring son "sigleton" y su duracion
+	sera toda la ejecucion del programa, se dice que el objeto sera unico
+	-->
+	
+	<bean class="entidad.Persona" id="persona1"></bean>
+	
+	
+	<!-- Podemos inicilizar objetos con valores por defecto siempre y cuando
+	tengan getters y setters -->
+	 
+	<bean class="entidad.Persona" id="persona2">
+		<property name="nombre" value="Jagris"></property>
+		<property name="edad" value="89"></property>
+		<property name="peso" value="754.5"></property>
+	</bean> 
+	
+	<!-- Hay casos en los que queremos crear objetos persona a peticion, es decir
+	que los objetos no esten creados de antemano, para ello tenemos el alcance
+	"prototype" 
+	Este tipo de alcance tenemos un objeto base o molde del cual se crearan todos
+	los demas objetos a peticion. Pero OJO! Importante! Alerta! dichos objetos
+	no seran gestionados por Spring
+	-->
+	
+	<bean id="personaPrototype" class="entidad.Persona" scope="prototype">
+		<property name="edad" value="18"></property>
+	</bean>
+	
+	<bean id="listaPersonas" class="java.util.LinkedList" scope="singleton"></bean>
+	
+	<!-- El objeto persona tiene como dependencia ahora una direccion, así que vamos
+	a tener que inyectarsela (Inyeccion de Dependencias) -->
+	
+	<bean id="direccionPersona1" class="entidad.Direccion">
+		<property name="tipoVia" value="Calle"></property>
+		<property name="nombreVia" value="la peseta"></property>
+		<property name="ciudad" value="Alcanfran"></property>
+	</bean>
+	
+	<bean id="persona3" class="entidad.Persona">
+		<property name="nombre" value="Rompetechos"></property>
+		<property name="edad" value="45"></property>
+		<property name="peso" value="50"></property>
+		<property name="direccion" ref="direccionPersona1"></property>
+	</bean>
+	
+</beans>
