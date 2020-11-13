@@ -53,6 +53,9 @@ public class MainSpring {
 		
 		p3 = context.getBean("persona3",Persona.class);
 		System.out.println(p3);
+		
+		p3 = context.getBean("persona4",Persona.class);
+		System.out.println(p3);
 	}
 	
 	public static void cambiarNombre(String nombre) {

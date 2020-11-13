@@ -52,7 +52,7 @@
 		<property name="nombreVia" value="la peseta"></property>
 		<property name="ciudad" value="Alcanfran"></property>
 	</bean>
-	
+	<!-- Estepicursor -->
 	<bean id="persona3" class="entidad.Persona">
 		<property name="nombre" value="Rompetechos"></property>
 		<property name="edad" value="45"></property>
@@ -60,4 +60,49 @@
 		<property name="direccion" ref="direccionPersona1"></property>
 	</bean>
 	
+	<!-- Pero podemos hacer otro tipo de inyeccion de dependecias que es mediannte
+	inner Bean o bean interno -->
+	<bean id="persona4" class="entidad.Persona">
+		<property name="nombre" value="Estepicursor"></property>
+		<property name="edad" value="33"></property>
+		<property name="peso" value="78"></property>
+		<property name="direccion">
+			<bean class="entidad.Direccion">
+				<property name="tipoVia" value="Calle"></property>
+				<property name="nombreVia" value="augusto estoy"></property>
+				<property name="ciudad" value="Barcelona"></property>
+			</bean>
+		</property>
+	</bean>
+	
+	<!-- Crear un array con datos -->
+	<bean id="arrayPersonasRelleno" class="java.util.ArrayList">
+		<constructor-arg>
+			<list>
+				<ref bean="persona4"/>
+				<ref bean="persona3"/>
+				<bean class="entidad.Persona">
+					<property name="nombre" value="Filemon"></property>
+					<property name="edad" value="44"></property>
+					<property name="peso" value="68"></property>
+					<property name="direccion">
+						<bean class="entidad.Direccion">
+							<property name="tipoVia" value="Calle"></property>
+							<property name="nombreVia" value="Rue Del Percebe"></property>
+							<property name="ciudad" value="Madriz"></property>
+						</bean>
+					</property>
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<!-- Si tenemos constructor con parametros podemos usar ese constructor en vez
+	de el constructor por defecto -->
+	<bean id="persona5" class="entidad.Persona">
+		<constructor-arg index="0" value="Dr. Bacterio"></constructor-arg>
+		<constructor-arg index="1" value="75"></constructor-arg>
+		<constructor-arg index="2" value="60"></constructor-arg>
+		<constructor-arg index="3" ref="direccionPersona1"></constructor-arg>
+	</bean>
 </beans>
