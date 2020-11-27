@@ -1,0 +1,10 @@
+Repetir este ejemplo pero con las clases
+
+Cliente
+	Nombre
+	Apellidos
+	Pedido
+	
+Pedido
+	id
+	precio
