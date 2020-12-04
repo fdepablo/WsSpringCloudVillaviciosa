@@ -4,6 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
+
+//Para que Spring lea estas anotaciones, es muy muy
+//muy muy muy muy muy importante que las clases
+//anotadas esten dentro de la jerarquia del paquete
+//donde se encuenta la clase Application.java
+//Ej: en esta app, la clase Application.java se encuentra
+//en el paquete "demo", por lo tanto todos nuestros beans
+//deben de estar en un paquete que empiece por "demo"
 @Component
 @Scope("prototype")
 public class Persona {

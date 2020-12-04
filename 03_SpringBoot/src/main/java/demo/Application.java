@@ -3,7 +3,10 @@ package demo;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ImportResource;
 
+import demo.modelo.entidad.Coche;
+import demo.modelo.entidad.Libro;
 import demo.modelo.entidad.Persona;
 
 //Esta clase de aqui va a ser nuestro punto de entrada de la
@@ -22,6 +25,10 @@ import demo.modelo.entidad.Persona;
 //perfectamente operativa
 
 @SpringBootApplication
+//Con esta anotacion le decimos a springboot que vaya
+//a la carpeta de "resources" a cargar en el contexto de
+//spring todos los beans que haya en el xml
+@ImportResource("classpath:beans.xml")
 public class Application {
 
 	public static ApplicationContext context = null;
@@ -35,6 +42,19 @@ public class Application {
 		
 		Persona p2 = context.getBean("persona", Persona.class);
 		System.out.println(p2);
+		
+		Coche c = context.getBean("coche", Coche.class);
+		c.setMarca("Ferrari");
+		System.out.println(c);
+		
+		Coche c2 = context.getBean("coche", Coche.class);
+		System.out.println(c2);
+		c2.setMarca("Seat");
+		
+		System.out.println(c);
+		
+		Libro l = context.getBean("libroSingleton", Libro.class);
+		System.out.println(l);
 	}
 
 }

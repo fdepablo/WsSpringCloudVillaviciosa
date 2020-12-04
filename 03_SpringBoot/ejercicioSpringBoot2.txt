@@ -1,0 +1,37 @@
+1) Creamos un proyecto nuevo SpringBoot
+
+2) Crear una serie de entidades y a darlas de alta en el contexto de spring
+
+3) Crear la entidad Email con los campos
+	int id
+	String remitente
+	String destinatario
+	
+4) Daremos de alta en el contexto de spring un Email por anotaciones de scope Prototype
+
+5) Daremos de alta en el contexto de spring 2 Email mediante XML de scope Singleton,
+les daremos el id que estimemos
+
+6) Crear la entidad Libro con los campos
+	String isbn
+	String editorial
+	Autor autor
+	
+	Crear la entidad Autor con los campos
+		int id
+		String nombre
+		int edad
+
+7) Daremos de alta en el contexto de spring un Libro que tenga un autor mediante anotaciones con scope
+prototipado
+
+8) Daremos de alta en contexto de spring un Libro que tenga un autor mediante XML con scope Singleton
+OJO AQUI!!! En el contexto de spring va a haber varios autores disponibles para un libro, ojo aqui
+porque os puede dar problemas el autorwired
+
+
+
+
+
+
+
