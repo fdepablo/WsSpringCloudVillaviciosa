@@ -1,0 +1,35 @@
+1) Creamos un proyecto nuevo SpringBoot
+
+2) Crear una serie de entidades y a darlas de alta en el contexto de spring
+
+3) Crear la entidad Pelicula con los campos
+	int id
+	Director director
+	Actor actor
+	
+	Crear la entidad Actor con los campos
+		int id
+		String nombre
+		int edad
+	
+	Crear la entidad Director con los campos
+		int id
+		String nombre
+		int edad
+		año de nacimiento
+		
+OJO, se puede detectar herencia
+
+7) Daremos de alta en el contexto de spring una pelicula que tenga todos los objetos rellenos
+Tambien daremos de alta un actor y un director. Todos estos objetos se daran de alta mediante 
+anotaciones y la instancia del objeto sera diferente cada vez que la pidamos.
+
+8) Daremos de alta en contexto de spring una pelicula mediante xml pero esta vez estableceremos
+los datos, de tipo prototypado. Esta vez hacerlo mediante constructor
+
+
+
+
+
+
+
