@@ -5,12 +5,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 //Estamos diciendo que se tiene que crear una
 //tabla pelicul, con unos campos que son los atributos
 //y que los objetos seran las filas
+//Esto seria JPA
+//Para más informacion consulte
+//https://github.com/fdepablo/WorkspaceJava/tree/master/32_JPA
 @Entity
+//Podemos seguir usando todas las anotaciones que queramos
+@Component
+@Scope("prototype")
 public class Pelicula {
+	//con esta anotacion decimos que el id sera pk
 	@Id
+	//le decimos que el valor sea autogenerado
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String titulo;

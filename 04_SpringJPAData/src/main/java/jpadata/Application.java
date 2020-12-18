@@ -17,7 +17,8 @@ public class Application {
 	public static void main(String[] args) {
 		context = SpringApplication.run(Application.class, args);
 		
-		Pelicula p = new Pelicula();
+		//Pelicula p = new Pelicula();
+		Pelicula p = context.getBean("pelicula", Pelicula.class);
 		p.setTitulo("La guerra de las galaxias");
 		p.setDirector("George lucas");
 		p.setAnio(1998);
