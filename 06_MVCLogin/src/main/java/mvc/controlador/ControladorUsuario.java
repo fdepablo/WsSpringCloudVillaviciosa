@@ -1,6 +1,8 @@
 package mvc.controlador;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,8 +63,11 @@ public class ControladorUsuario {
 			//Este objeto damos un nombre de atributo y 
 			//un valor del atributo. Este atributo podremos
 			//acceder a el en la vista (html)
-			model.addAttribute("nombre", username);
 			model.addAttribute("fecha", new Date());
+			List<String> lista = new ArrayList<String>();
+			lista.add(username);
+			lista.add(password);
+			model.addAttribute("lista", lista);
 			return "inicio";
 		}else {
 			return "errorLogin";

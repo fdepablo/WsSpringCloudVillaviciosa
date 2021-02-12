@@ -10,18 +10,24 @@ trabajar con el motor de plantillas thymeleaf -->
 	<h1>PAGINA DE INICIO</h1>
 	<!-- Tenemos que poner en th:value="" el mismo nombre del
 	atributo que le dimos al objeto Model en el Controlador -->
-	<h2 style="color:blue">
-		Bienvenido Usuario: <span th:text="${nombre}"></span>
-	</h2>
-	<hr/>
 	<h3>
 		La fecha es: <span th:text="${fecha}"></span>
 	</h3>	
 	<!-- 
-	Para una lista
-	<p th:each="usuario : ${listaUsuario}">
-    <span th:text="${usuario}"></span>
-	</p>
-	 -->
+	Para una lista de objetos.
+	lista -> nombre del atributo del objeto Model que hemos puesto en el controlador
+	valor -> cada uno de los valores que tiene la lista,equivalete a un for each de java
+	Ej:
+	for(String valor : lista){
+		System.out.println(valor);
+	}
+	-->
+	<h3 style="color:red" th:each="valor : ${lista}">
+    	<span th:text="${valor}"></span>
+    	<!-- si valor fuera un objeto podemos acceder a sus
+    	atributos de la forma "valor.nombreAtributo"
+    	ojo! sin get!
+    	 -->
+	</h3>
 </body>
 </html>
