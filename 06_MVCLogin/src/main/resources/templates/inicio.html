@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<!-- Debemos de importar este namespace para poder
+trabajar con el motor de plantillas thymeleaf -->
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
@@ -6,5 +8,20 @@
 </head>
 <body>
 	<h1>PAGINA DE INICIO</h1>
+	<!-- Tenemos que poner en th:value="" el mismo nombre del
+	atributo que le dimos al objeto Model en el Controlador -->
+	<h2 style="color:blue">
+		Bienvenido Usuario: <span th:text="${nombre}"></span>
+	</h2>
+	<hr/>
+	<h3>
+		La fecha es: <span th:text="${fecha}"></span>
+	</h3>	
+	<!-- 
+	Para una lista
+	<p th:each="usuario : ${listaUsuario}">
+    <span th:text="${usuario}"></span>
+	</p>
+	 -->
 </body>
 </html>

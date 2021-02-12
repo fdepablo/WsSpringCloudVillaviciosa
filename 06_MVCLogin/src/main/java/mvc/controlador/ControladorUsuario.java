@@ -1,5 +1,7 @@
 package mvc.controlador;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,9 +32,13 @@ public class ControladorUsuario {
 	//Con la anotacion @RequestParam buscamos un parametros
 	//que venga en el mensaje HTTP, en este caso recogemos
 	//el parametro "nombre" y "pass"
+	
+	//El objeto Model nos va a ayudar a pasar datos del controlador
+	//a la vista
 	@PostMapping("/doLogin")
 	public String login(@RequestParam("nombre") String username, 
-				@RequestParam("pass") String password) {
+				@RequestParam("pass") String password,
+				Model model) {
 		
 		System.out.println("Entrando login");
 		Usuario usuario = new Usuario();
@@ -41,10 +47,22 @@ public class ControladorUsuario {
 		
 		boolean validado = gestorUsuario.validar(usuario);
 			
+		//Si queremos mandar datos( lo habitual) del controlador
+		//a la vista tenemos que usar un objeto que haga la funcion
+		//de trasnportar la informacion. Para ello usaremos un
+		//objeto de Spring que es el Model. Tenemos que decirle
+		//a Spring que nos lo pase y en el poner la información
+		//que queramos
+		
 		//El valor que devolvamos como String sera la pagina
 		//web que tiene que ir a buscar en src/main/resources
 		//No hay que poner el ".html"
-		if(validado) {
+		if(validado) {	
+			//Este objeto damos un nombre de atributo y 
+			//un valor del atributo. Este atributo podremos
+			//acceder a el en la vista (html)
+			model.addAttribute("nombre", username);
+			model.addAttribute("fecha", new Date());
 			return "inicio";
 		}else {
 			return "errorLogin";
